@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DynamicCv.DataContext\DynamicCv.DataContext.csproj" />
+    <ProjectReference Include="..\DynamicCv.Entities\DynamicCv.Entities.csproj" />
+  </ItemGroup>
+
+</Project>
