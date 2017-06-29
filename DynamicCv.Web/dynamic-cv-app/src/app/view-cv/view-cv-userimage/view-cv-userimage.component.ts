@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserimageServiceService } from './../services/userimage/userimage-service.service'
+import { UserimageServiceService } from './../../services/userimage/userimage-service.service'
 
 @Component({
   selector: 'app-view-cv-userimage',
