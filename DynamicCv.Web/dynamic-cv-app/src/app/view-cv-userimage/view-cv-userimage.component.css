@@ -1,0 +1,12 @@
+.user-picture {
+    border:1px solid #333;
+    padding: 2px;
+    width: 210px;
+    height: auto;
+    margin: 5px;
+}
+
+.user-picture img {
+    width: 100%;
+    height: auto;
+}
