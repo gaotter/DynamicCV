@@ -4,23 +4,26 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DynamicCv.Services.Interfaces;
+using DynamicCv.Services.Repositories;
+using DynamicCv.Entities.CvEntities;
 
 namespace DynamicCv.Web.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
-        private ICvEntriesRepositoriy _cvEnt;
+        private ICvEntriesRepository _cvEnt;
 
-        public ValuesController(ICvEntriesRepositoriy cvEnt)
+        public ValuesController(ICvEntriesRepository cvEnt)
         {
             _cvEnt = cvEnt;
         }
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IEnumerable<Entry>> Get()
         {
-            return new string[] { "value1", "value2" };
+            var all = await _cvEnt.GetAllEntires();
+            return all;
         }
 
         // GET api/values/5

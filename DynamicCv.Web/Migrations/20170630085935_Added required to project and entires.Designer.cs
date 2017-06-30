@@ -8,9 +8,10 @@ using DynamicCv.DataContext.CvDbContext;
 namespace DynamicCv.Web.Migrations
 {
     [DbContext(typeof(CvContext))]
-    partial class CvContextModelSnapshot : ModelSnapshot
+    [Migration("20170630085935_Added required to project and entires")]
+    partial class Addedrequiredtoprojectandentires
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")

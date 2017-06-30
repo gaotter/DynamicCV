@@ -8,9 +8,10 @@ using DynamicCv.DataContext.CvDbContext;
 namespace DynamicCv.Web.Migrations
 {
     [DbContext(typeof(CvContext))]
-    partial class CvContextModelSnapshot : ModelSnapshot
+    [Migration("20170630085435_Added to and from to entires and projects")]
+    partial class Addedtoandfromtoentiresandprojects
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -61,8 +62,7 @@ namespace DynamicCv.Web.Migrations
 
                     b.Property<DateTime>("From");
 
-                    b.Property<string>("Title")
-                        .IsRequired();
+                    b.Property<string>("Title");
 
                     b.Property<DateTime>("To");
 
@@ -86,8 +86,7 @@ namespace DynamicCv.Web.Migrations
 
                     b.Property<string>("ProjectDescription");
 
-                    b.Property<string>("ProjectName")
-                        .IsRequired();
+                    b.Property<string>("ProjectName");
 
                     b.Property<DateTime>("To");
 

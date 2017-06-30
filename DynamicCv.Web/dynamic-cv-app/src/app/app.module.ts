@@ -13,6 +13,8 @@ import { ViewCvUserAboutComponent } from './view-cv/view-cv-user-about/view-cv-u
 
 import { UserimageServiceService } from './services/userimage/userimage-service.service';
 import { CvUserServiceService } from './services/cv-user-service/cv-user-service.service';
+import { DateTimeService } from './services/helpers/date-time.service';
+
 import { ViewCvEntriesComponent } from './view-cv/view-cv-entries/view-cv-entries.component';
 
 
@@ -31,7 +33,7 @@ import { ViewCvEntriesComponent } from './view-cv/view-cv-entries/view-cv-entrie
     FormsModule,
     HttpModule
   ],
-  providers: [UserimageServiceService, CvUserServiceService],
+  providers: [UserimageServiceService, CvUserServiceService, DateTimeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

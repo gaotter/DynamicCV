@@ -8,9 +8,10 @@ using DynamicCv.DataContext.CvDbContext;
 namespace DynamicCv.Web.Migrations
 {
     [DbContext(typeof(CvContext))]
-    partial class CvContextModelSnapshot : ModelSnapshot
+    [Migration("20170627151521_Add user as a level, connected user to entry")]
+    partial class Adduserasalevelconnectedusertoentry
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -59,12 +60,7 @@ namespace DynamicCv.Web.Migrations
 
                     b.Property<string>("ContentText");
 
-                    b.Property<DateTime>("From");
-
-                    b.Property<string>("Title")
-                        .IsRequired();
-
-                    b.Property<DateTime>("To");
+                    b.Property<string>("Title");
 
                     b.Property<int?>("UserId");
 
@@ -82,14 +78,9 @@ namespace DynamicCv.Web.Migrations
 
                     b.Property<int?>("EntryId");
 
-                    b.Property<DateTime>("From");
-
                     b.Property<string>("ProjectDescription");
 
-                    b.Property<string>("ProjectName")
-                        .IsRequired();
-
-                    b.Property<DateTime>("To");
+                    b.Property<string>("ProjectName");
 
                     b.HasKey("Id");
 

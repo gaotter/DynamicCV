@@ -10,6 +10,8 @@ using Microsoft.Extensions.Logging;
 using DynamicCv.Services.CvServices;
 using DynamicCv.Services.Interfaces;
 using DynamicCv.Services.Repositories;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace DynamicCv.Web
 {
@@ -31,11 +33,14 @@ namespace DynamicCv.Web
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
-            services.AddEntityServiceConnection(connectionString);
+            services.AddEntityServiceConnection(connectionString, "DynamicCv.Web");
             // Add framework services.
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(options => {
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            });
 
-            services.AddScoped<ICvEntriesRepositoriy, CvEntriesRepository>();
+            services.AddScoped<ICvEntriesRepository, CvEntriesRepository>();
+            services.AddScoped<IUserRepsitory, UserReposistory>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,7 +49,21 @@ namespace DynamicCv.Web
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            app.UseMvc();
+            app.Use(async (context, next) => {
+                await next();
+                if (context.Response.StatusCode == 404 &&
+                   !Path.HasExtension(context.Request.Path.Value) &&
+                   !context.Request.Path.Value.StartsWith("/api/"))
+                {
+                    context.Request.Path = "/index.html";
+                    await next();
+                }
+            });
+
+            app.UseMvcWithDefaultRoute();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+            // app.UseMvc();
         }
     }
 }
