@@ -1,5 +1,15 @@
-<div >
-
+<div class="row" *ngFor="let entry of enties">
+  <div class="col col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <p class="view-cv-entry-headertext">{{ entry.title }}</p>
+      </div>
+      <div class="panel-body">
+        <p class="view-cv-entry-bodytext">{{ entry.contentText }}</p>
+        <b>{{ entry.projects.length > 1 ? "Projects" : "Project" }}</b>
+        <p class="" ><span class="view-cv-entry-projecttitle" *ngFor="let project of entry.projects">{{ project.projectName }}</span></p>
+      </div>
+      <div class="panel-footer"></div>
+    </div>
+  </div>
 </div>
-
-
