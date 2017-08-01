@@ -19,6 +19,7 @@ import { DateTimeService } from './services/helpers/date-time.service';
 
 import { ViewCvEntriesComponent } from './view-cv/view-cv-entries/view-cv-entries.component';
 import { UserLoginComponent } from './user-login/user-login.component';
+import { ViewCvEntryComponent } from './view-cv/view-cv-entry/view-cv-entry.component';
 
 
 const appRoutes: Routes = [
@@ -39,7 +40,8 @@ const appRoutes: Routes = [
     ViewCvUserimageComponent,
     ViewCvUserAboutComponent,
     ViewCvEntriesComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    ViewCvEntryComponent
   ],
   imports: [
     BrowserModule,
