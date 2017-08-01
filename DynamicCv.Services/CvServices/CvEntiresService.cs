@@ -9,11 +9,11 @@ namespace DynamicCv.Services.CvServices
 {
     public static class CvEntiresService
     {
-        public static IServiceCollection AddEntityServiceConnection(this IServiceCollection services, string connectionString)
+        public static IServiceCollection AddEntityServiceConnection(this IServiceCollection services, string connectionString, string migrationAssembly)
         {
             services.AddEntityFrameworkSqlServer()
             .AddDbContext<CvContext>((serviceProvider, options) =>
-            options.UseSqlServer(connectionString, b => b.MigrationsAssembly("DynamicCv.Web"))
+            options.UseSqlServer(connectionString, b => b.MigrationsAssembly(migrationAssembly))
                    .UseInternalServiceProvider(serviceProvider)
                    );
             return services;

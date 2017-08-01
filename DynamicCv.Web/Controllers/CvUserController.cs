@@ -8,6 +8,7 @@ using DynamicCv.Services.Interfaces;
 using DynamicCv.Entities.CvEntities;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using Knowit.Amende.Helpers.Extensions;
 
 namespace DynamicCv.Web.Controllers
 {
@@ -29,8 +30,21 @@ namespace DynamicCv.Web.Controllers
         public async Task<CvUser> Get()
         {
             var userid = _httpConextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-           
-            return await _userRep.GetUser(userid);
+            _httpConextAccessor.HttpContext.User.Claims.ForEach(c => Console.WriteLine($"Type: {c.Type} Value: {c.Value}"));
+            var picture = GetClaimValueByType("picture", _httpConextAccessor.HttpContext.User.Claims, 1);
+
+            var user = await _userRep.GetUser(userid);
+
+            user.PictureUrl = picture;
+
+            return user;
+        }
+
+
+        private string GetClaimValueByType(string type, IEnumerable<Claim> claims, int index = 0)
+        {
+            var foundClaim = index == 0 ? claims.FirstOrDefault(c => c.Type == type) : claims.Where(c => c.Type == type).ToList()[index];
+            return foundClaim != null ? foundClaim.Value : "";
         }
     }
 }

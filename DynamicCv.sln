@@ -1,15 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.12
+VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicCv.DataContext", "DynamicCv.DataContext\DynamicCv.DataContext.csproj", "{FF6887D7-F92B-4F67-B7DB-403FFFB6E071}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DynamicCv.DataContext", "DynamicCv.DataContext\DynamicCv.DataContext.csproj", "{FF6887D7-F92B-4F67-B7DB-403FFFB6E071}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicCv.Entities", "DynamicCv.Entities\DynamicCv.Entities.csproj", "{238AAC8A-2BD5-4705-973C-094C0D2AE5BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DynamicCv.Entities", "DynamicCv.Entities\DynamicCv.Entities.csproj", "{238AAC8A-2BD5-4705-973C-094C0D2AE5BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicCv.Services", "DynamicCv.Services\DynamicCv.Services.csproj", "{FFD6AB0F-9B28-48D7-863B-94C6085B2917}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DynamicCv.Services", "DynamicCv.Services\DynamicCv.Services.csproj", "{FFD6AB0F-9B28-48D7-863B-94C6085B2917}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicCv.Web", "DynamicCv.Web\DynamicCv.Web.csproj", "{B7F307FB-19E1-4140-9FA5-EDFE84D6638B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DynamicCv.Web", "DynamicCv.Web\DynamicCv.Web.csproj", "{B7F307FB-19E1-4140-9FA5-EDFE84D6638B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Knowit.Amende.Helpers", "Knowit.Amende.Helpers\Knowit.Amende.Helpers.csproj", "{E1FEFB95-3130-4EE9-83FD-5012E6ECFE3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{B7F307FB-19E1-4140-9FA5-EDFE84D6638B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7F307FB-19E1-4140-9FA5-EDFE84D6638B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7F307FB-19E1-4140-9FA5-EDFE84D6638B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1FEFB95-3130-4EE9-83FD-5012E6ECFE3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1FEFB95-3130-4EE9-83FD-5012E6ECFE3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1FEFB95-3130-4EE9-83FD-5012E6ECFE3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1FEFB95-3130-4EE9-83FD-5012E6ECFE3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

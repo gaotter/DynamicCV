@@ -7,7 +7,7 @@
         <div class="row">
 
             <div class="col col-md-3">
-                <app-view-cv-userimage></app-view-cv-userimage>
+                <app-view-cv-userimage [userImagePath]="userInfo.pictureUrl"></app-view-cv-userimage>
             </div>
             <div class="col col-md-9"><app-view-cv-user-about [aboutText]="userInfo.about"></app-view-cv-user-about></div>
         </div>
