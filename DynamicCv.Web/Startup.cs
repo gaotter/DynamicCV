@@ -12,6 +12,10 @@ using DynamicCv.Services.Interfaces;
 using DynamicCv.Services.Repositories;
 using System.IO;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.Http;
 
 namespace DynamicCv.Web
 {
@@ -35,10 +39,13 @@ namespace DynamicCv.Web
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddEntityServiceConnection(connectionString, "DynamicCv.Web");
             // Add framework services.
+
+            services.AddAuthentication(options => options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme);
             services.AddMvc().AddJsonOptions(options => {
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             });
 
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<ICvEntriesRepository, CvEntriesRepository>();
             services.AddScoped<IUserRepsitory, UserReposistory>();
         }
@@ -48,6 +55,44 @@ namespace DynamicCv.Web
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AuthenticationScheme = "Cookies",
+                AutomaticAuthenticate = true,
+                AutomaticChallenge = true
+            });
+
+            //app.UseGoogleAuthentication(new GoogleOptions {
+            //    ClientId = "453230586864-i6238u1usqk4oemmfnnlfvfouh9hkgnn.apps.googleusercontent.com",
+            //    ClientSecret = "-e-LBYgTm5UDFtsPGu6gOcxa",
+            //    CallbackPath = new PathString("/signin-google") 
+
+            //}
+            //);
+
+            app.UseOpenIdConnectAuthentication(new OpenIdConnectOptions
+            {
+                ClientId = "453230586864-i6238u1usqk4oemmfnnlfvfouh9hkgnn.apps.googleusercontent.com",
+                ClientSecret = "-e-LBYgTm5UDFtsPGu6gOcxa",
+                Authority = "https://accounts.google.com",
+                ResponseType = OpenIdConnectResponseType.Code,
+                GetClaimsFromUserInfoEndpoint = true,
+                SaveTokens = true,
+                Events = new OpenIdConnectEvents()
+                {
+                    OnRedirectToIdentityProvider = (context) =>
+                    {
+                        if (context.Request.Path != "/api/Account")
+                        {
+                            context.Response.Redirect("/api/Account/login");
+                            context.HandleResponse();
+                        }
+
+                        return Task.FromResult(0);
+                    }
+                }
+            });
 
             app.Use(async (context, next) => {
                 await next();
@@ -63,6 +108,8 @@ namespace DynamicCv.Web
             app.UseMvcWithDefaultRoute();
             app.UseDefaultFiles();
             app.UseStaticFiles();
+
+         
             // app.UseMvc();
         }
     }

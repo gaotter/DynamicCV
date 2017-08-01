@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using DynamicCv.Services.Interfaces;
 using DynamicCv.Services.Repositories;
 using DynamicCv.Entities.CvEntities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DynamicCv.Web.Controllers
 {
@@ -20,6 +21,7 @@ namespace DynamicCv.Web.Controllers
         }
         // GET api/values
         [HttpGet]
+        [Authorize]
         public async Task<IEnumerable<Entry>> Get()
         {
             var all = await _cvEnt.GetAllEntires();

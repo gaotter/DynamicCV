@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using DynamicCv.Services.Interfaces;
 using DynamicCv.Entities.CvEntities;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace DynamicCv.Web.Controllers
 {
@@ -14,16 +16,21 @@ namespace DynamicCv.Web.Controllers
     public class CvUserController : Controller
     {
         private IUserRepsitory _userRep;
+        private IHttpContextAccessor _httpConextAccessor;
 
-        public CvUserController(IUserRepsitory userRep)
+        public CvUserController(IUserRepsitory userRep, IHttpContextAccessor httpConextAccessor)
         {
             _userRep = userRep;
+            _httpConextAccessor = httpConextAccessor;
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<CvUser> Get()
         {
-            return await _userRep.GetUser("gaotter@gmail.com");
+            var userid = _httpConextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+           
+            return await _userRep.GetUser(userid);
         }
     }
 }
