@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { ICvUser, initICvUser } from './../../interfaces/i-user';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Injectable()
 export class CvUserServiceService {
 
-  constructor(private _http: Http) { }
+  constructor(private _http: Http, private route: ActivatedRoute,
+        private router: Router,) { }
   _userInfo: ICvUser;
 
   getUserInfo() {
@@ -18,6 +20,10 @@ export class CvUserServiceService {
           let jsonData = c.json();
 
           this._userInfo = jsonData;
+          console.log(this._userInfo);
+          if(this._userInfo.loginStatus === "NotLoggedIn") {
+            this.router.navigate(["login"]);
+          }
 
           resolve(this._userInfo);
         })

@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { TestServiceCallComponent } from './test-service-call/test-service-call.component';
 
+import { RouterModule, Routes } from '@angular/router';
+
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ViewCvComponent } from './view-cv/view-cv.component';
@@ -16,6 +18,16 @@ import { CvUserServiceService } from './services/cv-user-service/cv-user-service
 import { DateTimeService } from './services/helpers/date-time.service';
 
 import { ViewCvEntriesComponent } from './view-cv/view-cv-entries/view-cv-entries.component';
+import { UserLoginComponent } from './user-login/user-login.component';
+
+
+const appRoutes: Routes = [
+  { path: 'login', component: UserLoginComponent },
+  {
+    path:'', component:ViewCvComponent 
+  }
+
+];
 
 
 @NgModule({
@@ -26,12 +38,17 @@ import { ViewCvEntriesComponent } from './view-cv/view-cv-entries/view-cv-entrie
     ViewCvUserHeaderComponent,
     ViewCvUserimageComponent,
     ViewCvUserAboutComponent,
-    ViewCvEntriesComponent
+    ViewCvEntriesComponent,
+    UserLoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    )
   ],
   providers: [UserimageServiceService, CvUserServiceService, DateTimeService],
   bootstrap: [AppComponent]

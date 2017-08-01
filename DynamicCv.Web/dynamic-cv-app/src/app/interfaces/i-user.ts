@@ -8,6 +8,7 @@ export interface ICvUser {
     role: string,
     userLogin: string,
     entries: IEntries[]
+    loginStatus:string
 
 }
 
@@ -19,5 +20,6 @@ export let initICvUser:ICvUser = {
     firstName: '',
     lastName: '',
     role: '',
-    userLogin: ''
+    userLogin: '',
+    loginStatus:''
   };
