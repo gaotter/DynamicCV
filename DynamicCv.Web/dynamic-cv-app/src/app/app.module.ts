@@ -20,6 +20,7 @@ import { DateTimeService } from './services/helpers/date-time.service';
 import { ViewCvEntriesComponent } from './view-cv/view-cv-entries/view-cv-entries.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { ViewCvEntryComponent } from './view-cv/view-cv-entry/view-cv-entry.component';
+import { FlowCvEntityComponent } from './flow-cv/flow-cv-entity/flow-cv-entity.component';
 
 
 const appRoutes: Routes = [
@@ -41,7 +42,8 @@ const appRoutes: Routes = [
     ViewCvUserAboutComponent,
     ViewCvEntriesComponent,
     UserLoginComponent,
-    ViewCvEntryComponent
+    ViewCvEntryComponent,
+    FlowCvEntityComponent
   ],
   imports: [
     BrowserModule,
