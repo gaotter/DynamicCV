@@ -1,0 +1,9 @@
+.edit-form-control {
+    border: 0px solid #fff;
+    border-radius: 0;
+    width: 100%;
+    overflow: hidden;
+    min-height: 50px;
+    max-height: 400px;
+    
+}

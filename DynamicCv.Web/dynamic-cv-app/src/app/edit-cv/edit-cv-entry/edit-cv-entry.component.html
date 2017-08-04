@@ -1,13 +1,25 @@
-<div class="panel-heading">
-  <p class="cv-entry-headertext">Title</p>
-</div>
-<div class="panel-body">
-  <div class="cv-entry-bodytext">
-    <p>contentText</p>
-    <p>From:</p>
-    <p>To</p>
-    <b>Projects</b>
-    <p class=""></p>
-  </div>
 
-</div>
+  
+  <form #cvEntry="ngForm">
+    <div class="panel-heading">
+      <div class="form-group">
+        <input type="text" class="edit-form-control" name="title" [(ngModel)]="entry.title"  required />
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="cv-entry-bodytext">
+        <div class="form-group">
+          <textarea type="text" class="edit-form-control" name="contentText" [(ngModel)]="entry.contentText" required elastic ></textarea>
+        </div>
+        <div class="form-group">
+          <input type="date" class="edit-form-control" name="from" [ngModel]="dateTimeService.tickToCommonStr(entry.fromAsUtcJsTicks)" (ngModelChange)="onFromModelChange($event)" required />
+        </div>
+        <div class="form-group">
+          <input type="date" class="edit-form-control" name="to" [ngModel]="dateTimeService.tickToCommonStr(entry.toAsUtcJSTicks)" required />
+        </div>
+        <b>Projects</b>
+        <p class=""></p>
+      </div>
+
+    </div>
+  </form>
