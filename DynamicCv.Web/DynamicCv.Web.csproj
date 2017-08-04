@@ -23,6 +23,7 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.1" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DynamicCv.Common\DynamicCv.Common.csproj" />
     <ProjectReference Include="..\DynamicCv.Entities\DynamicCv.Entities.csproj" />
     <ProjectReference Include="..\DynamicCv.Services\DynamicCv.Services.csproj" />
     <Compile Remove="dynamic-cv-app//**" />

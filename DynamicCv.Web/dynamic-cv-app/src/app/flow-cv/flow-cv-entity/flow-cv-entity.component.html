@@ -1,12 +1,17 @@
 <div class="flow-cv-body">
   <div class="row">
     <div class="col-md-12">
-      <button class="flow-cv-iconbutton pull-right">
+      <button class="flow-cv-iconbutton pull-right" (click)="toogleEditMode()">
          <i class="fa fa-pencil pull-right" aria-hidden="true"></i>
       </button>
     </div>
   </div>
   <div class="row">
-    <app-view-cv-entry [entry]="entry"></app-view-cv-entry>
+    <div *ngIf="!editMode; else elseTemplate">
+      <app-view-cv-entry [entry]="entry"></app-view-cv-entry>
+    </div>
+    <ng-template #elseTemplate>
+      <app-edit-cv-entry></app-edit-cv-entry>
+    </ng-template>
   </div>
 </div>

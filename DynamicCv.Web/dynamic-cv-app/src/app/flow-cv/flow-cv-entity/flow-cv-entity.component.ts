@@ -8,7 +8,12 @@ import { IEntries } from './../../interfaces/i-entires';
 })
 export class FlowCvEntityComponent implements OnInit {
   @Input() entry:IEntries;
+  editMode:boolean = false;
   constructor() { }
+
+  toogleEditMode() {
+    this.editMode = !this.editMode;
+  }
 
   ngOnInit() {
   }

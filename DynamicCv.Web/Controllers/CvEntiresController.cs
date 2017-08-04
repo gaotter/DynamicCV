@@ -24,5 +24,16 @@ namespace DynamicCv.Web.Controllers
         {
             return await _entryService.GetAllEntires();
         }
+
+        [HttpPut]
+        public async Task<IActionResult> Edit([FromBody] Entry entry)
+        {
+            var status = await _entryService.UpdateEntry(entry);
+
+            if (status == Common.Enums.Statuses.NotFound)
+                return BadRequest();
+
+            return Ok(entry);
+        }
     }
 }

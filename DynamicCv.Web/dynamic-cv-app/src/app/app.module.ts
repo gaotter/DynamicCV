@@ -21,6 +21,7 @@ import { ViewCvEntriesComponent } from './view-cv/view-cv-entries/view-cv-entrie
 import { UserLoginComponent } from './user-login/user-login.component';
 import { ViewCvEntryComponent } from './view-cv/view-cv-entry/view-cv-entry.component';
 import { FlowCvEntityComponent } from './flow-cv/flow-cv-entity/flow-cv-entity.component';
+import { EditCvEntryComponent } from './edit-cv/edit-cv-entry/edit-cv-entry.component';
 
 
 const appRoutes: Routes = [
@@ -43,7 +44,8 @@ const appRoutes: Routes = [
     ViewCvEntriesComponent,
     UserLoginComponent,
     ViewCvEntryComponent,
-    FlowCvEntityComponent
+    FlowCvEntityComponent,
+    EditCvEntryComponent
   ],
   imports: [
     BrowserModule,

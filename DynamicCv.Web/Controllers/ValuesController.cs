@@ -21,7 +21,7 @@ namespace DynamicCv.Web.Controllers
         }
         // GET api/values
         [HttpGet]
-        [Authorize]
+        //[Authorize]
         public async Task<IEnumerable<Entry>> Get()
         {
             var all = await _cvEnt.GetAllEntires();

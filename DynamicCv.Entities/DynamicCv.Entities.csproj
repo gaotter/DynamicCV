@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DynamicCv.Common\DynamicCv.Common.csproj" />
     <ProjectReference Include="..\Knowit.Amende.Helpers\Knowit.Amende.Helpers.csproj" />
   </ItemGroup>
 

@@ -1,3 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.css";
+
+
+
+/*entires*/
+.cv-entry-bodytext {
+    text-align: left;
+}
+
+.cv-entry-headertext {
+    text-align: left;
+}
+
+.cv-entry-projecttitle {
+    margin-right: 5px;
+}

@@ -1,13 +1,13 @@
 <div class="panel-heading">
-  <p class="view-cv-entry-headertext">{{ entry.title }}</p>
+  <p class="cv-entry-headertext">{{ entry.title }}</p>
 </div>
 <div class="panel-body">
-  <div class="view-cv-entry-bodytext">
+  <div class="cv-entry-bodytext">
     <p>{{ entry.contentText }} </p>
     <p>From: {{dateTimeService.tickToLocalStr(entry.fromAsUtcJsTicks)}}</p>
     <p>To: {{dateTimeService.tickToLocalStr(entry.toAsUtcJSTicks)}}</p>
     <b>{{ entry.projects.length > 1 ? "Projects" : "Project" }}</b>
-    <p class=""><span class="view-cv-entry-projecttitle" *ngFor="let project of entry.projects">{{ project.projectName }}</span></p>
+    <p class=""><span class="cv-entry-projecttitle" *ngFor="let project of entry.projects">{{ project.projectName }}</span></p>
   </div>
 
 </div>
